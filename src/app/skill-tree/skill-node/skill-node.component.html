@@ -1,0 +1,20 @@
+<div class="skill-node">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{skillNode.name}}</mat-card-title>
+      <mat-card-subtitle>{{skillNode.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{skillNode.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <!--    todo db jakieś akcje umożliwić -->
+    </mat-card-actions>
+  </mat-card>
+  <div class="children-row">
+    <app-skill-node *ngFor="let childNode of skillNode.childNodes"
+                    [skillNode]="childNode"></app-skill-node>
+  </div>
+</div>
