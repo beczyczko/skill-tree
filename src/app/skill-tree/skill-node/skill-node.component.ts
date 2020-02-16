@@ -18,41 +18,41 @@ export class SkillNodeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.skillNode);
     if (this.skillNode.parentNode) {
-      const node = document.getElementById(this.skillNode.id);
-      const parentNode = document.getElementById(this.skillNode.parentNode.id);
-      const line = document.getElementById(`line_${this.skillNode.parentNode.id}`);
+      const card = document.getElementById(`card_${this.skillNode.id}`);
+      const parentCard = document.getElementById(`card_${this.skillNode.parentNode.id}`);
 
-      const nodePositions = node.getBoundingClientRect();
-      console.log(nodePositions);
-      const parentNodePositions = parentNode.getBoundingClientRect();
-      console.log(parentNodePositions);
-      const linePositions = line.getBoundingClientRect();
-      console.log(linePositions);
-      // line.setAttribute('x1', nodePositions.x.toString());
-      // line.setAttribute('y1', nodePositions.y.toString());
-      // line.setAttribute('x2', parentNodePositions.x.toString());
-      // line.setAttribute('y2', parentNodePositions.y.toString());
-      // line.setAttribute('stroke', 'red');
-      //
+      const cardPosition = card.getBoundingClientRect();
+      console.log(cardPosition);
+      const parentCardPosition = parentCard.getBoundingClientRect();
+      console.log(parentCardPosition);
 
-      const newSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      newSVG.setAttribute('width', '1600px');
-      newSVG.setAttribute('height', '900px');
-      newSVG.style.position = 'absolute';
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('width', '1600px');
+      svg.setAttribute('height', '900px');
+      svg.style.position = 'absolute';
 
-      const newLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-      newLine.setAttribute('id', `line_t_${this.skillNode.parentNode.id}`);
-      newLine.setAttribute('x1', nodePositions.x.toString());
-      newLine.setAttribute('y1', nodePositions.y.toString());
-      newLine.setAttribute('x2', parentNodePositions.x.toString());
-      newLine.setAttribute('y2', parentNodePositions.y.toString());
-      newLine.setAttribute('stroke', 'red');
-      newLine.setAttribute('stroke-width', '3');
-      newSVG.appendChild(newLine);
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      const lineStart = {
+        x: (parentCardPosition.x + parentCardPosition.width * 0.5).toString(),
+        y: (parentCardPosition.y + parentCardPosition.height).toString()
+      };
 
-      document.getElementById('lines_container').appendChild(newSVG);
+      const lineEnd = {
+        x: (cardPosition.x + cardPosition.width * 0.5).toString(),
+        y: (cardPosition.y).toString()
+      };
+
+      line.setAttribute('id', `connection_line_${this.skillNode.parentNode.id}`);
+      line.setAttribute('x1', lineStart.x);
+      line.setAttribute('y1', lineStart.y);
+      line.setAttribute('x2', lineEnd.x);
+      line.setAttribute('y2', lineEnd.y);
+      line.setAttribute('stroke', 'darkslategrey');
+      line.setAttribute('stroke-width', '2');
+      svg.appendChild(line);
+
+      document.getElementById('lines_container').appendChild(svg);
     }
   }
 }
