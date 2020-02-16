@@ -1,5 +1,8 @@
 <div class="skill-node">
-  <mat-card>
+  <svg style="position: absolute">
+    <line id="{{'line_' + skillNode.id}}"/>
+  </svg>
+  <mat-card id="{{skillNode.id}}">
     <mat-card-header>
       <mat-card-title>{{skillNode.name}}</mat-card-title>
       <mat-card-subtitle>{{skillNode.description}}</mat-card-subtitle>

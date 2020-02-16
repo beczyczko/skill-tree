@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SkillNode} from './skill-node/skill-node';
 
 @Component({
@@ -9,22 +9,23 @@ import {SkillNode} from './skill-node/skill-node';
 export class SkillTreeComponent implements OnInit {
 
   public skillNode = new SkillNode(
+    '1',
     'Angular',
     'super skill',
     [
-      new SkillNode('CSS', 'Basic', [
-        new SkillNode('SCSS', '', [
-          new SkillNode('mixin', '', [])
+      new SkillNode('11', 'CSS', 'Basic', [
+        new SkillNode('111', 'SCSS', '', [
+          new SkillNode('1111', 'mixin', '', [])
         ]),
-        new SkillNode('Operators', '', []),
+        new SkillNode('112', 'Operators', '', []),
       ]),
-      new SkillNode('HTML', 'Basic', [
-        new SkillNode('Tagi', '', []),
+      new SkillNode('12', 'HTML', 'Basic', [
+        new SkillNode('121', 'Tagi', '', []),
       ]),
-      new SkillNode('JS', 'Basic', [
-        new SkillNode('TS', '', []),
-        new SkillNode('Array methods', '', []),
-        new SkillNode('Async/Await', '', []),
+      new SkillNode('13', 'JS', 'Basic', [
+        new SkillNode('131', 'TS', '', []),
+        new SkillNode('132', 'Array methods', '', []),
+        new SkillNode('133', 'Async/Await', '', []),
       ]),
     ]);
 
